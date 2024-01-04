@@ -1,0 +1,55 @@
+#include <stdio.h>
+
+int main() {
+    int n, i;
+    float minDiscount, maxDiscount;
+
+    // Input the number of products
+    printf("Enter the number of products: ");
+    scanf("%d", &n);
+
+    // Validate the number of products
+    if (n <= 0) {
+        printf("Invalid number of products. Exiting...\n");
+        return 1;
+    }
+
+    // Input the specified range of discounts
+    printf("Enter the minimum discount: ");
+    scanf("%f", &minDiscount);
+    printf("Enter the maximum discount: ");
+    scanf("%f", &maxDiscount);
+
+    // Validate the discount range
+    if (minDiscount < 0 || maxDiscount < 0 || minDiscount > maxDiscount) {
+        printf("Invalid discount range. Exiting...\n");
+        return 1;
+    }
+
+    // Display products within the specified discount range
+    printf("\nSuggested Products:\n");
+    printf("----------------------------\n");
+    printf("%-20s %-10s %-10s\n", "Product Name", "Discount", "Quality");
+    printf("----------------------------\n");
+
+    for (i = 0; i < n; i++) {
+        char name[50];
+        float discount, quality;
+
+        // Input product details
+        printf("Enter details for product %d:\n", i + 1);
+        printf("Name: ");
+        scanf("%s", name);
+        printf("Discount: ");
+        scanf("%f", &discount);
+        printf("Quality: ");
+        scanf("%f", &quality);
+
+        // Check if the product falls within the specified discount range
+        if (discount >= minDiscount && discount <= maxDiscount) {
+            printf("%-20s %-10.2f %-10.2f\n", name, discount, quality);
+        }
+    }
+
+    return 0;
+}
